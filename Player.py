@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class player(object):
     x = 0
     y = 0
@@ -40,3 +41,5 @@ def keyPressed():
             playerObj.moveUp()
         elif keyCode == DOWN:
             playerObj.moveDown()
+=======
+>>>>>>> df8dfbefab7d5ccb4f3d610252fe427ffbbee93c

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from Block import Block
 from Player import player
 import random
@@ -21,3 +22,9 @@ def draw():
     
     for block in blocks:
         block.show()
+=======
+<<<<<<< HEAD
+#blah
+=======
+>>>>>>> 102ef5465a735d01c6b83bc399db83fe6f097405
+>>>>>>> df8dfbefab7d5ccb4f3d610252fe427ffbbee93c
