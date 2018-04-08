@@ -30,22 +30,7 @@ class player:
             self.x=width # later on this is the end of the screen so win
                 
     def checkCollisions(self, blocks):
-<<<<<<< HEAD
-        for b in blocks:
-            bx = b.x-b.w/2
-            bmax = b.x+b.w/2
-            if b.tag:
-                if (self.x+self.radius)>=bx and (self.x-self.radius)<=bmax: # right x value
-                    if (self.y+self.radius<=b.h/2): # right y value
-                        b.info()
-                        return True
-            else:
-                if (self.x+self.radius)>=bx and (self.x-self.radius)<=bmax:
-                    if (self.y+self.radius>=b.h/2):
-                        b.info()
-                        return True
-        return False
-=======
+
         for block in blocks:
             testX = block.x
             testY = self.y
@@ -66,4 +51,3 @@ class player:
     def stopPlayer(self):
         self.xspeed = 0
         self.yspeed = 0
->>>>>>> 92a05658bb8675dc8741e42d67825bde9bc3634f
