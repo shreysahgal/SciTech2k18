@@ -35,6 +35,22 @@ class player:
     
     def checkCollisions(self, blocks):
         for block in blocks:
-            if self.x+self.radius >= block.x and ((block.tag and self.y+self.radius <= block.h) or (!block.tag and self.y+self.radius >= block.h)):
+            testX = block.x
+            testY = self.y
+            if self.y < block.y:
+                testY = block.y # top edge
+            elif self.y > block.y+block.h:
+                testY = block.y+block.h
+            
+            dX = self.x-self.radius/2 - testX
+            dY = self.y - testY
+            d = sqrt( (dX*dX) + (dY*dY) )
+            
+            if d <= self.radius:
                 return True
+            
         return False
+    
+    def stopPlayer(self):
+        self.xspeed = 0
+        self.yspeed = 0
