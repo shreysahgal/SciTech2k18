@@ -7,4 +7,5 @@ class Block:
         self.h = h
     def show(self):
         rectMode(CENTER)
-        rect(x, y, w, h)
+        fill(0,0,255)
+        rect(self.x, self.y, self.w, self.h)
