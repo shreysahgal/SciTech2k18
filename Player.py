@@ -1,12 +1,8 @@
 from Block import Block
 
 class player:
-    x = 0
-    y = 0
-    xspeed = 0
-    yspeed = 0
-    radius = 0
     def __init__(self, y, yspeed, xspeed, radius):
+        self.x = 0
         self.y = y
         self.yspeed = yspeed
         self.xspeed = xspeed
@@ -32,9 +28,19 @@ class player:
             self.y=0
         if self.x>width:
             self.x=width # later on this is the end of the screen so win
-    
+                
     def checkCollisions(self, blocks):
-        for block in blocks:
-            if self.x+self.radius >= block.x and ((block.tag and self.y+self.radius <= block.h) or (!block.tag and self.y+self.radius >= block.h)):
-                return True
+        for b in blocks:
+            bx = b.x-b.w/2
+            bmax = b.x+b.w/2
+            if b.tag:
+                if (self.x+self.radius)>=bx and (self.x-self.radius)<=bmax: # right x value
+                    if (self.y+self.radius<=b.h/2): # right y value
+                        b.info()
+                        return True
+            else:
+                if (self.x+self.radius)>=bx and (self.x-self.radius)<=bmax:
+                    if (self.y+self.radius>=b.h/2):
+                        b.info()
+                        return True
         return False
