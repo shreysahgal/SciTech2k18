@@ -7,16 +7,16 @@ blocks = []
 def spawnRandomBlocks(n):
     global blocks
     
-    for i in range(n):
-        blocks.append(Block(random.randint(0, width-99), random.randint(0, height-99), random.randint(50, 120), random.randint(0, int(height/1.1))))
+    for x in range(100, width-100, 250):
+        blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
     
 def setup():
     size(displayWidth,displayHeight)
     global playerObj
-    playerObj = player(height/2,10,3,40)
+    playerObj = player(height/2,10,2,40)
     global blocks
     
-    spawnRandomBlocks(8)
+    spawnRandomBlocks(6)
         
 def draw():
     global blocks
