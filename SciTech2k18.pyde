@@ -1,18 +1,29 @@
 from Block import Block
 from Player import player
+from Population import Population
+
 import random
 
 blocks = []
 def spawnRandomBlocks(n):
     global blocks
+=======
+<<<<<<< HEAD
+    global blocks
     
     for x in range(100, width-100, 250):
         blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
     
+<<<<<<< HEAD
+=======
+>>>>>>> e16146cd747bad4397d1d7f639eaafb42d045cbb
+    for x in range(100, width-100, 250):
+        blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
+>>>>>>> f9ceabb020e338e836cecad7c41525d536a2e96a
 def setup():
     size(displayWidth, displayHeight)
     global playerObj
-    playerObj = player(height/2,10,2,40)
+    playerObj = player(height/2,10,2,40, width/2)
     global blocks
     
     spawnRandomBlocks(6)
@@ -39,9 +50,7 @@ def draw():
     
     bottomDist = playerRayCast30()
     line(playerObj.x,playerObj.y,playerObj.x+cos(-PI/6)*bottomDist,playerObj.y+sin(-PI/6)*bottomDist)
-        
-    print(midDist)
-        
+    
 # dumb comment
 def keyPressed():
      global playerObj
@@ -50,7 +59,10 @@ def keyPressed():
              playerObj.moveUp()
          elif keyCode == DOWN:
              playerObj.moveDown()
+<<<<<<< HEAD
 
+=======
+>>>>>>> f9ceabb020e338e836cecad7c41525d536a2e96a
 
 def playerRayCast0(): # ray cast forward
     global playerObj
@@ -59,7 +71,6 @@ def playerRayCast0(): # ray cast forward
     for i in blocks:
         if i.y<=playerObj.y and i.y+i.h>=playerObj.y and i.x >= playerObj.x:
             dists.append(i.x-playerObj.x)
-    print(dists)
     return min(dists)
 
 def playerRayCast30(): # ray cast 30 degrees up
@@ -112,4 +123,8 @@ def playerRayCastb30(): # ray cast 30 degrees down
             testy = m*(i.x-playerObj.x)+playerObj.y
             if testy>=i.y and testy<=i.y+i.h:
                 dists.append(dist(playerObj.x,playerObj.y,i.x,testy))
+<<<<<<< HEAD
     return min(dists)
+=======
+    return min(dists)
+>>>>>>> f9ceabb020e338e836cecad7c41525d536a2e96a
