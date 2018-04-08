@@ -8,7 +8,7 @@ def spawnRandomBlocks(n):
     global blocks
     
     for i in range(n):
-        blocks.append(Block(random.randint(0, width-99), height*random.randint(0, 2), random.randint(50, 120), random.randint(600, 800)))
+        blocks.append(Block(random.randint(0, width-99), height*random.randint(0, 2), random.randint(50, 120), random.randint(0, int(height/1.1))))
     
 def setup():
     size(displayWidth,displayHeight)
@@ -27,6 +27,7 @@ def draw():
     playerObj.display()
     for block in blocks:
         block.show()
+    print(playerObj.checkCollisions(blocks))
 
 def keyPressed():
      global playerObj

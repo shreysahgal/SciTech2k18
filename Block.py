@@ -5,6 +5,11 @@ class Block:
         self.y = y
         self.w = w
         self.h = h
+        self.tag = None
+        if y == 0:
+            self.tag = True
+        else:
+            self.tag = False
     def show(self):
         rectMode(CENTER)
         fill(0,0,255)
