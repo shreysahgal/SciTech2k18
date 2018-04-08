@@ -22,3 +22,11 @@ class player:
     
     def moveRight(self):
         self.x += self.xspeed
+        
+    def checkBounds(self):
+        if self.y>height:
+            self.y=height
+        if self.y<0:
+            self.y=0
+        if self.x>width:
+            self.x=width # later on this is the end of the screen so win
