@@ -6,7 +6,26 @@ import random
 
 blocks = []
 def spawnRandomBlocks(n):
+<<<<<<< HEAD
     global blocks
+=======
+<<<<<<< HEAD
+    global blocks
+    
+    for x in range(100, width-100, 250):
+        blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
+=======
+<<<<<<< HEAD
+    global blocks    
+    for i in range(n):
+        blocks.append(Block(random.randint(0, width-99), random.randint(0, height-99), random.randint(50, 120), random.randint(0, int(height/1.1))))
+
+
+=======
+    global blocks
+>>>>>>> 70d5bd5cb09c717cffcd6d7bfbff251adf31d505
+    
+>>>>>>> e16146cd747bad4397d1d7f639eaafb42d045cbb
     for x in range(100, width-100, 250):
         blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
 def setup():

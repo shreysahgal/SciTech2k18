@@ -1,4 +1,3 @@
-
 class Block:
     def __init__(self, x, y, w, h):
         self.w = w
