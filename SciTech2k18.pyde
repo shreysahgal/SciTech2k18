@@ -4,18 +4,26 @@ import random
 
 blocks = []
 def spawnRandomBlocks(n):
+<<<<<<< HEAD
     global blocks    
     for i in range(n):
         blocks.append(Block(random.randint(0, width-99), random.randint(0, height-99), random.randint(50, 120), random.randint(0, int(height/1.1))))
 
 
+=======
+    global blocks
+    
+    for x in range(100, width-100, 250):
+        blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
+    
+>>>>>>> 68d708b6ea1e4ba44cbe6a63478455bb5cbcca76
 def setup():
     size(displayWidth, displayHeight)
     global playerObj
-    playerObj = player(height/2,10,3,40)
+    playerObj = player(height/2,10,2,40)
     global blocks
     
-    spawnRandomBlocks(8)
+    spawnRandomBlocks(6)
         
 def draw():
     global blocks
@@ -50,6 +58,7 @@ def keyPressed():
              playerObj.moveUp()
          elif keyCode == DOWN:
              playerObj.moveDown()
+<<<<<<< HEAD
 
 def playerRayCast0(): # ray cast forward
     global playerObj
@@ -112,3 +121,5 @@ def playerRayCastb30(): # ray cast 30 degrees down
             if testy>=i.y and testy<=i.y+i.h:
                 dists.append(dist(playerObj.x,playerObj.y,i.x,testy))
     return min(dists)
+=======
+>>>>>>> 68d708b6ea1e4ba44cbe6a63478455bb5cbcca76
