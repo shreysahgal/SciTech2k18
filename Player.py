@@ -1,12 +1,24 @@
 from Block import Block
+import random
+
+def upOrDown():
+    if random.randint(0, 1) == 0:
+        return 0
+    return 1
 
 class player:
-    def __init__(self, y, yspeed, xspeed, radius):
+    
+    def __init__(self, y, yspeed, xspeed, radius, dnalen):
         self.x = 0
         self.y = y
         self.yspeed = yspeed
         self.xspeed = xspeed
         self.radius = radius
+        self.moves = []
+        self.counter = 0
+
+        for i in range(dnalen):
+            self.moves.append(upOrDown())
     
     def display(self):
         fill(0,255,0)
@@ -17,9 +29,16 @@ class player:
     
     def moveDown(self):
         self.y += self.yspeed
-    
+
     def moveRight(self):
         self.x += self.xspeed
+        if isinstance(self.counter, int):
+            if self.moves[self.counter] == 0:
+                self.moveUp()
+            elif self.moves[self.counter] == 1:
+                self.moveDown()
+        self.counter += 0.5
+        
         
     def checkBounds(self):
         if self.y>height:
@@ -32,12 +51,15 @@ class player:
     def checkCollisions(self, blocks):
 
         for block in blocks:
-            testX = block.x
+            if self.x<block.x:
+                testX = block.x
+            else:
+                testX = self.x
             testY = self.y
             if self.y < block.y:
                 testY = block.y # top edge
             elif self.y > block.y+block.h:
-                testY = block.y+block.h
+                testY = block.y+block.h # bottom edge
             
             dX = self.x-self.radius/2 - testX
             dY = self.y - testY
