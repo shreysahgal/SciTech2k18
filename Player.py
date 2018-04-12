@@ -50,24 +50,24 @@ class player:
                 
     def checkCollisions(self, blocks):
 
-        for block in blocks:
-            if self.x<block.x:
+        for block in blocks: # test variables are the perpendicular intersections
+            testX = self.x
+            if self.x<block.x: # left of the rect
                 testX = block.x
-            else:
-                testX = self.x
+            elif self.x>block.x+block.w:# right; this is probably never gonna happen but it is necessary if you are passed the box and want to get a false
+                testX = block.x+block.w
             testY = self.y
-            if self.y < block.y:
-                testY = block.y # top edge
+            if self.y < block.y:# above the rect
+                testY = block.y # 
             elif self.y > block.y+block.h:
                 testY = block.y+block.h # bottom edge
             
-            dX = self.x-self.radius/2 - testX
+            dX = self.x - testX
             dY = self.y - testY
             d = sqrt( (dX*dX) + (dY*dY) )
             
-            if d <= self.radius:
-                return True
-            
+            if d <= self.radius/2:
+                return True            
         return False
     
     def stopPlayer(self):
