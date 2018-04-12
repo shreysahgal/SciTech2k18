@@ -64,6 +64,15 @@ class player:
                 testY = block.y # 
             elif self.y > block.y+block.h:
                 testY = block.y+block.h # bottom edge
+<<<<<<< HEAD
+            
+            dX = self.x - testX
+            dY = self.y - testY
+            d = sqrt( (dX*dX) + (dY*dY) )
+            
+            if d <= self.radius/2:
+                return True            
+=======
 
             dX = self.x - testX
             dY = self.y - testY
@@ -71,6 +80,7 @@ class player:
 
             if d <= self.radius/2:
                 return True
+>>>>>>> 4abda537b3daad230e43ac874b4a17b519e85ded
         return False
     
     def stopPlayer(self):
