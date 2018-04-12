@@ -5,50 +5,61 @@ from Population import Population
 import random
 
 blocks = []
+p = None
+
 def spawnRandomBlocks(n):
     global blocks
+<<<<<<< HEAD
  
     for x in range(100, width-100, 250):
+=======
+    global p
+    for x in range(350, width-100, 200):
+>>>>>>> 4abda537b3daad230e43ac874b4a17b519e85ded
         blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
+    p = Population(10)
+        
 def setup():
-    size(displayWidth, displayHeight)
-    global playerObj
-    playerObj = player(height/2,10,2,40, width/2)
+    size(displayWidth, displayWidth-150)
+    # global playerObj
+    # playerObj = player(height/2,10,2,40, width)
     global blocks
-    
     spawnRandomBlocks(6)
         
 def draw():
     global blocks
+    global p
     background(255)
     strokeWeight(1)
-    global playerObj
-    playerObj.moveRight()
-    playerObj.checkBounds()
-    playerObj.display()
+    # global playerObj
+    # playerObj.moveRight()
+    # playerObj.checkBounds()
+    p.update()
     for block in blocks:
         block.show()
-    if (playerObj.checkCollisions(blocks)):
-        playerObj.stopPlayer()
     
-    strokeWeight(5)
-    topDist = playerRayCastb30()
-    line(playerObj.x,playerObj.y,playerObj.x+cos(PI/6)*topDist,playerObj.y+sin(PI/6)*topDist)
+    for player in p.peeps:
+        if (player.checkCollisions(blocks)):
+            player.stopPlayer()
     
-    midDist = playerRayCast0()
-    line(playerObj.x,playerObj.y,playerObj.x+midDist,playerObj.y)
+    # strokeWeight(5)
+    # topDist = playerRayCastb30()
+    # line(playerObj.x,playerObj.y,playerObj.x+cos(PI/6)*topDist,playerObj.y+sin(PI/6)*topDist)
     
-    bottomDist = playerRayCast30()
-    line(playerObj.x,playerObj.y,playerObj.x+cos(-PI/6)*bottomDist,playerObj.y+sin(-PI/6)*bottomDist)
+    # midDist = playerRayCast0()
+    # line(playerObj.x,playerObj.y,playerObj.x+midDist,playerObj.y)
+    
+    # bottomDist = playerRayCast30()
+    # line(playerObj.x,playerObj.y,playerObj.x+cos(-PI/6)*bottomDist,playerObj.y+sin(-PI/6)*bottomDist)
     
 # dumb comment
-def keyPressed():
-     global playerObj
-     if key == CODED:
-         if keyCode == UP:
-             playerObj.moveUp()
-         elif keyCode == DOWN:
-             playerObj.moveDown()
+# def keyPressed():
+#      global playerObj
+#      if key == CODED:
+#          if keyCode == UP:
+#              playerObj.moveUp()
+#          elif keyCode == DOWN:
+#              playerObj.moveDown()
 
 def playerRayCast0(): # ray cast forward
     global playerObj

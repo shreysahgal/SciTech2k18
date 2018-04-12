@@ -16,6 +16,8 @@ class player:
         self.radius = radius
         self.moves = []
         self.counter = 0
+        self.numCycles = dnalen
+        self.fiss = 1/(dist(self.x, self.y, width, height/2))
 
         for i in range(dnalen):
             self.moves.append(upOrDown())
@@ -32,13 +34,14 @@ class player:
 
     def moveRight(self):
         self.x += self.xspeed
-        if isinstance(self.counter, int):
+        if self.counter < len(self.moves):
             if self.moves[self.counter] == 0:
                 self.moveUp()
-            elif self.moves[self.counter] == 1:
+            else:
                 self.moveDown()
-        self.counter += 0.5
-        
+        self.counter += 1
+        self.fitness = 100/dist(self.x, self.y, width, self.y)
+        line(self.x, self.y, width, self.y)
         
     def checkBounds(self):
         if self.y>height:
@@ -61,6 +64,7 @@ class player:
                 testY = block.y # 
             elif self.y > block.y+block.h:
                 testY = block.y+block.h # bottom edge
+<<<<<<< HEAD
             
             dX = self.x - testX
             dY = self.y - testY
@@ -68,6 +72,15 @@ class player:
             
             if d <= self.radius/2:
                 return True            
+=======
+
+            dX = self.x - testX
+            dY = self.y - testY
+            d = sqrt( (dX*dX) + (dY*dY) )
+
+            if d <= self.radius/2:
+                return True
+>>>>>>> 4abda537b3daad230e43ac874b4a17b519e85ded
         return False
     
     def stopPlayer(self):
