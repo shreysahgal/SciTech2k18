@@ -12,10 +12,10 @@ def spawnRandomBlocks(n):
     global p
     for x in range(350, width-100, 200):
         blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
-    p = Population(10)
+    p = Population(10, blocks)
         
 def setup():
-    size(displayWidth, displayWidth-150)
+    size(displayWidth, displayHeight)
     # global playerObj
     # playerObj = player(height/2,10,2,40, width)
     global blocks
@@ -33,9 +33,7 @@ def draw():
     for block in blocks:
         block.show()
     
-    for player in p.peeps:
-        if (player.checkCollisions(blocks)):
-            player.stopPlayer()
+    
     
     # strokeWeight(5)
     # topDist = playerRayCastb30()

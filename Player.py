@@ -40,7 +40,7 @@ class player:
             else:
                 self.moveDown()
         self.counter += 1
-        self.fitness = 100/dist(self.x, self.y, width, self.y)
+        self.fitness = 100/(dist(self.x, self.y, width, self.y)+1)
         line(self.x, self.y, width, self.y)
         
     def checkBounds(self):
@@ -76,3 +76,9 @@ class player:
     def stopPlayer(self):
         self.xspeed = 0
         self.yspeed = 0
+        
+    def resetX(self):
+        self.x = 0
+        self.xspeed = 2
+        self.yspeed = 5
+        
