@@ -9,13 +9,8 @@ p = None
 
 def spawnRandomBlocks(n):
     global blocks
-<<<<<<< HEAD
- 
-    for x in range(100, width-100, 250):
-=======
     global p
     for x in range(350, width-100, 200):
->>>>>>> 4abda537b3daad230e43ac874b4a17b519e85ded
         blocks.append(Block(x, random.randint(0, height-99), random.randint(40, 90), random.randint(0, int(height/1.1))))
     p = Population(10, blocks)
         

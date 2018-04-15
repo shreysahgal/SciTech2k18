@@ -36,6 +36,7 @@ class Population:
             text(self.peeps[x/30].fitness, 100, x)
         self.count += 1
         text(self.count, 500, 500)
+        text(self.peeps[0].numCycles, 500,600)
         
         if self.count >= self.peeps[0].numCycles:
             self.reset()
