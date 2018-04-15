@@ -28,6 +28,8 @@ class Population:
             i.calcFitness()
             if i.fitness > maxfit:
                 maxfit = i.fitness
+        
+        print(maxfit)
 
         for i in self.rockets:
             i.fitness /= maxfit
@@ -36,12 +38,12 @@ class Population:
          
         for i in self.rockets:
             n = int(i.fitness*100)
-            print(n)
+            # print(n)
             if (n > 0):
                 for j in range(n):
                     self.matingpool.append(i)
-        for i in self.matingpool:
-            print(i.fitness)
+        # for i in self.matingpool:
+            # print(i.fitness)
         
        
     
@@ -62,5 +64,9 @@ class Population:
             
     def stopAll(self):
         for i in self.rockets:
-            i.vel = PVector()
-            i.acc = PVector()
+            i.halt()
+            
+    def checkColls(self, blocks):
+        for i in self.rockets:
+            if i.checkColls(blocks):
+                i.reached = True
