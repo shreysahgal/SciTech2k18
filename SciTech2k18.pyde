@@ -1,30 +1,76 @@
-<<<<<<< HEAD
-from Block import Block
-from Player import player
+from rocket import Rocket
+from population import Population
+from block import Block
 import random
 
+p = None # population
+lifespan = 200
+target = None
+gen = 0
+
+numblocks = 5
 blocks = []
 
-def spawnRandomBlocks(n):
-    global blocks
-    
-    for i in range(n):
-        blocks.append(Block(random.randint(0, width-99), height*random.randint(0, 2), random.randint(50, 120), random.randint(600, 800)))
-    
+asdf = None            
+
+ready = False
+
+w = 0
+
 def setup():
-    size(600, 600)
-    global blocks
+    global p, target, numblocks, blocks
+    p = Population(target)
+    size(1000, 700)
+    target = PVector(width/2, 50)
     
-    spawnRandomBlocks(5)
-        
+    for i in range(numblocks+1):
+        blocks.append(Block(random.randint(50, width), random.randint(50, height-50), random.randint(25, 60), random.randint(30, 70)))
+    
 def draw():
-    global blocks
+    global ready
     
-    for block in blocks:
-        block.show()
-=======
-<<<<<<< HEAD
-#blah
-=======
->>>>>>> 102ef5465a735d01c6b83bc399db83fe6f097405
->>>>>>> df8dfbefab7d5ccb4f3d610252fe427ffbbee93c
+    background(192, 147, 255, 150)
+    if ready:
+        textSize(20)
+        doThings()
+    else:
+        textAlign(CENTER)
+        textSize(60)
+        fill(255, 211, 249)
+        text("Start!", width/2, height/2)
+        
+        if mousePressed and mouseX > width/2 - textWidth("Start!")/2 and mouseY > height/2 - 15 and mouseX < width/2 + textWidth("Start!")/2 and mouseY < height/2 + 15:
+            ready = True
+        
+        
+# def mouseClicked():
+#     global ready
+#     textSize(30)
+#     if mouseX > width/2 + textWidth("Start!")/2 and mouseY > height/2 - 15 and mouseX < width/2 + textWidth("Start!") + textWidth("Start!")/2 and mouseY < height/2 + 15:
+#         ready = True
+    
+def doThings():
+    global p, gen, target, blocks, asdf
+    
+    background(192, 147, 255, 150)
+    
+    
+    p.checkColls(blocks)
+    p.run()
+    
+    fill(255)
+    text(p.rockets[0].count, 100, 100)
+    text(gen, 150, 150)
+    
+    if p.rockets[-1].count == lifespan:
+        p.resetCount()
+        p.evaluate()
+        # p.stopAll()
+        p.selection()
+        # p.printFit()
+        gen += 1
+    
+    ellipse(target.x, target.y, 20, 20)
+    
+    for b in blocks:
+        b.show()
