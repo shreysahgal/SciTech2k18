@@ -53,6 +53,7 @@ class Population:
             parentA = random.choice(self.matingpool).dna
             parentB = random.choice(self.matingpool).dna
             child =  parentA.crossover(parentB)
+            child.mutate()
             # print(i.fitness)
             newrockets.append(Rocket(self.target, child, None))
         

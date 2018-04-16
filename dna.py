@@ -18,5 +18,6 @@ class DNA:
     
     def mutate(self):
         for i in self.genes:
-            if random(1) < 0.05:
-                i = PVector.random2D.setMag(0.6)
+            if random.random < 0.15:
+                i = PVector.random2D().setMag(0.6)
+        print("mutatin")
