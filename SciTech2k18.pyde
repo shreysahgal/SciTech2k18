@@ -35,6 +35,9 @@ def draw():
         doThings()
     else:
         textAlign(CENTER)
+        fill(0, 90)
+        textSize(30)
+        text("press any key to start the training", width/2, height/2 - 100)
         textSize(60)
         fill(255, 211, 249)
         text("Start!", width/2, height/2)
@@ -44,13 +47,7 @@ def draw():
         
         if keyPressed == True:
             ready = True
-        
-        
-# def mouseClicked():
-#     global ready
-#     textSize(30)
-#     if mouseX > width/2 + textWidth("Start!")/2 and mouseY > height/2 - 15 and mouseX < width/2 + textWidth("Start!") + textWidth("Start!")/2 and mouseY < height/2 + 15:
-#         ready = True
+
 def prepare():
     global blocks
     if mousePressed and mouseButton == LEFT:
