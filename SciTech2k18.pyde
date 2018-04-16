@@ -64,8 +64,8 @@ def doThings():
     p.run()
     
     fill(255)
-    text(p.rockets[0].count, 100, 100)
-    text(gen, 150, 150)
+    text("gen: " + str(gen), 100, 100)
+    text("max fitness: " + p.maxfit[:5], 100, 150)
     
     # if any(p.rockets[-1].count == lifespan:
     if any([r.count >= lifespan for r in p.rockets]):

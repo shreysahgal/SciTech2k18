@@ -8,6 +8,7 @@ class Population:
         self.popsize = 25
         self.matingpool = []
         self.target = target
+        self.maxfit = "n/a"
         
         for i in range(self.popsize):
             self.rockets.append(Rocket(self.target, None, i))
@@ -29,7 +30,7 @@ class Population:
             if i.fitness > maxfit:
                 maxfit = i.fitness
         
-        print(maxfit)
+        self.maxfit = str(maxfit)
 
         for i in self.rockets:
             i.fitness /= maxfit
